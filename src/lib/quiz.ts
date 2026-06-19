@@ -1,4 +1,5 @@
 import { prisma } from "./prisma";
+import { wishes } from "@/data/wishes";
 
 /** The only labels a question's options may use. */
 export const OPTION_LABELS = ["a", "b", "c"] as const;
@@ -77,4 +78,102 @@ export async function createQuestion(userId: string, input: QuestionInput) {
       include: { options: true },
     });
   });
+}
+
+/** Fallback portrait for a well-wisher who isn't in the wishes catalogue. */
+const FALLBACK_WISHER_IMAGE = "/images/celebrant.jpg";
+
+/**
+ * Resolve a well-wisher's portrait (and slug, if any) from the wishes catalogue
+ * by matching on name. Falls back to a default portrait for unknown wishers.
+ */
+function wisherPortrait(name: string): { image: string; slug?: string } {
+  const match = wishes.find(
+    (w) => w.name.toLowerCase() === name.trim().toLowerCase(),
+  );
+  return match ? { image: match.image, slug: match.slug } : { image: FALLBACK_WISHER_IMAGE };
+}
+
+/** A quiz as shown in the listing: one well-wisher and how many questions they wrote. */
+export interface QuizSummary {
+  /** The owning user's id — also the quiz route segment (`/quiz/[id]`). */
+  id: string;
+  name: string;
+  image: string;
+  slug?: string;
+  questionCount: number;
+}
+
+/**
+ * Every well-wisher who owns at least one question, with their question count
+ * and portrait — the data behind the quiz listing page.
+ */
+export async function getQuizzesByWellWisher(): Promise<QuizSummary[]> {
+  const users = await prisma.user.findMany({
+    where: { questions: { some: {} } },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      _count: { select: { questions: true } },
+    },
+    orderBy: { name: "asc" },
+  });
+
+  return users.map((u) => {
+    const name = u.name ?? u.email;
+    return {
+      id: u.id,
+      name,
+      questionCount: u._count.questions,
+      ...wisherPortrait(name),
+    };
+  });
+}
+
+/** A single well-wisher's quiz, with questions and options (answers omitted). */
+export interface WellWisherQuiz {
+  id: string;
+  name: string;
+  image: string;
+  slug?: string;
+  questions: {
+    id: string;
+    text: string;
+    position: number;
+    options: { id: string; label: string; text: string }[];
+  }[];
+}
+
+/** Load one well-wisher's quiz by user id, or null if they have no quiz. */
+export async function getQuizForWellWisher(
+  userId: string,
+): Promise<WellWisherQuiz | null> {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      questions: {
+        orderBy: { position: "asc" },
+        select: {
+          id: true,
+          text: true,
+          position: true,
+          // `isCorrect` is intentionally not selected — the listing/preview
+          // must not leak answers to the client.
+          options: {
+            orderBy: { label: "asc" },
+            select: { id: true, label: true, text: true },
+          },
+        },
+      },
+    },
+  });
+
+  if (!user || user.questions.length === 0) return null;
+
+  const name = user.name ?? user.email;
+  return { id: user.id, name, ...wisherPortrait(name), questions: user.questions };
 }
