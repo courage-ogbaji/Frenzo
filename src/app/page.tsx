@@ -1,9 +1,13 @@
-import Link from "next/link";
 import Image from "next/image";
+
+import WishCard from "@/Components/WishCard";
+import { wishes } from "@/data/wishes";
 
 export default function Home() {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen md:h-screen w-full md:items-stretch overflow-y-auto md:overflow-hidden bg-background pt-30 text-foreground">
+    <main className="bg-background text-foreground">
+    {/* Hero — celebrant banner + birthday wish */}
+    <section className="flex flex-col md:flex-row min-h-screen md:h-screen w-full md:items-stretch overflow-y-auto md:overflow-hidden pt-30">
       {/* Celebrant banner — top on mobile, left on desktop */}
       <div className="w-full md:w-1/2 h-72 md:h-auto p-4 md:p-8 m-1 md:m-8">
         <div className="relative h-full w-full overflow-hidden rounded-2xl border-2 border-accent/60 bg-surface shadow-2xl shadow-accent/30">
@@ -54,14 +58,34 @@ export default function Home() {
 
           <p>
             We dance to the rhythm of your soul&apos;s music, and we sing along
-            all day long.
+            all day.
           </p>
 
           <p className="text-xl font-semibold text-accent">
             Love you, our friend and brother!
           </p>
         </article>
+
       </div>
-    </div>
+    </section>
+
+    {/* Wishes — cards from well-wishers */}
+    <section id="wishes" className="scroll-mt-28 px-6 py-20">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="mb-3 text-center font-heading text-[32px] font-bold text-heading">
+          Wishes
+        </h2>
+        <p className="mb-12 text-center text-foreground/70">
+          Heartfelt messages from the people who love you.
+        </p>
+
+        <div className="space-y-24">
+          {wishes.map((wish, index) => (
+            <WishCard key={wish.slug} wish={wish} reversed={index % 2 === 1} />
+          ))}
+        </div>
+      </div>
+    </section>
+    </main>
   );
 }
