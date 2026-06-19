@@ -2,11 +2,11 @@ import Link from "next/link"
 
 export default function Navbar() {
     return (
-        <nav className="flex items-center justify-center p-4 bg-linear-to-r from-black to-yellow-600 text-yellow-400">
-            <div className="flex justify-between w-[70%] text-2xl font-semibold">
-                <Link href="/">Home</Link>
-                <Link href="/gallery">Gallery</Link>
-                <Link href="/quiz">Quiz</Link>
+        <nav className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 py-5 text-nav">
+            <div className="flex w-[70%] items-center justify-between rounded-full bg-surface px-8 py-3 font-nav text-lg font-normal shadow-lg">
+                <Link href="/" className="hover:text-white">Home</Link>
+                <Link href="/gallery" className="hover:text-white">Gallery</Link>
+                <Link href="/quiz" className="hover:text-white">Quiz</Link>
             </div>
         </nav>
     )
