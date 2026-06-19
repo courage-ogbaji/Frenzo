@@ -7,6 +7,7 @@ export default function Navbar() {
                 <Link href="/" className="hover:text-white">Home</Link>
                 <Link href="/gallery" className="hover:text-white">Gallery</Link>
                 <Link href="/quiz" className="hover:text-white">Quiz</Link>
+                <Link href="/scoreboard" className="hover:text-white">Scoreboard</Link>
             </div>
         </nav>
     )
