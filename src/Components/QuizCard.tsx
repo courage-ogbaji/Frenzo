@@ -14,6 +14,7 @@ export default function QuizCard({ quiz }: { quiz: QuizSummary }) {
           src={quiz.image}
           alt={quiz.name}
           fill
+          sizes="(min-width: 640px) 176px, 128px"
           className="object-cover transition duration-500 group-hover:scale-105"
         />
       </div>

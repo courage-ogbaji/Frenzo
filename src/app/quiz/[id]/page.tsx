@@ -23,6 +23,7 @@ export default async function WellWisherQuiz({
               src={quiz.image}
               alt={quiz.name}
               fill
+              sizes="112px"
               className="object-cover"
             />
           </div>

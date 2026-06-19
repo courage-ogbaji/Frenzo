@@ -18,23 +18,8 @@ export default async function Quiz() {
                     </p>
                 </header>
 
-                <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-                    {/* Left — fixed while the list on the right scrolls */}
-                    <div className="md:sticky md:top-32 md:self-start">
-                        <h2 className="font-heading text-3xl font-bold leading-snug text-heading">
-                            Think you know your friends better?  
-                            Put your friendship to the test with this fun quiz! Answer questions about their likes, 
-                            memories, personality, and favorite things to see how well you truly know them. 
-                            Challenge other friends, compare scores, and discover who deserves the title of the celebrant&apos;s
-                            biggest fan. Good luck, and let the fun begin!
-
-                        </h2>
-                    </div>
-
-                    {/* Right — scrollable horizontal rows */}
-                    <div className="md:max-h-[70vh] md:overflow-y-auto md:pr-2">
-                        <QuizList quizzes={quizzes} />
-                    </div>
+                <div className="mx-auto max-w-2xl">
+                    <QuizList quizzes={quizzes} />
                 </div>
 
                 <div className="mt-16 text-center">
