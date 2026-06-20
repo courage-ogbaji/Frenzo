@@ -19,9 +19,9 @@ export default function QuizCard({ quiz }: { quiz: QuizSummary }) {
         />
       </div>
 
-      <div className="flex flex-1 items-center justify-between gap-4 p-6">
+      <div className="flex flex-1 flex-col justify-center gap-2 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:p-6">
         <div>
-          <h2 className="font-heading text-xl font-bold text-heading">
+          <h2 className="font-heading text-lg font-bold text-heading sm:text-xl">
             {quiz.name}
           </h2>
           <p className="mt-1 text-sm text-accent">
@@ -29,7 +29,7 @@ export default function QuizCard({ quiz }: { quiz: QuizSummary }) {
             {quiz.questionCount === 1 ? "question" : "questions"}
           </p>
         </div>
-        <span className="shrink-0 font-semibold text-accent group-hover:underline">
+        <span className="font-semibold text-accent group-hover:underline sm:shrink-0">
           Take the quiz &rarr;
         </span>
       </div>

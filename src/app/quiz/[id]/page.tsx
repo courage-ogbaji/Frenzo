@@ -38,7 +38,7 @@ export default async function WellWisherQuiz({
           </p>
         </header>
 
-        <QuizRunner questions={quiz.questions} />
+        <QuizRunner userId={quiz.id} questions={quiz.questions} />
 
         <div className="mt-16 text-center">
           <Link

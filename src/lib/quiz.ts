@@ -177,3 +177,66 @@ export async function getQuizForWellWisher(
   const name = user.name ?? user.email;
   return { id: user.id, name, ...wisherPortrait(name), questions: user.questions };
 }
+
+/** One well-wisher's standing on the scoreboard. */
+export interface ScoreboardEntry {
+  id: string;
+  name: string;
+  image: string;
+  slug?: string;
+  questionCount: number;
+  /** How many times this well-wisher's quiz has been played. */
+  attempts: number;
+  /** Average score across all plays, as a 0–100 percentage. */
+  averagePercent: number;
+}
+
+/**
+ * Every well-wisher who owns a quiz, ranked by how well players score on it —
+ * the higher the average, the better that person is "known". Well-wishers with
+ * no plays yet sort last.
+ */
+export async function getScoreboard(): Promise<ScoreboardEntry[]> {
+  const users = await prisma.user.findMany({
+    where: { questions: { some: {} } },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      _count: { select: { questions: true } },
+      attempts: { select: { score: true, total: true } },
+    },
+  });
+
+  const entries = users.map((u) => {
+    const name = u.name ?? u.email;
+    const attempts = u.attempts.length;
+    const averagePercent =
+      attempts === 0
+        ? 0
+        : Math.round(
+            (u.attempts.reduce(
+              (sum, a) => sum + (a.total > 0 ? a.score / a.total : 0),
+              0,
+            ) /
+              attempts) *
+              100,
+          );
+
+    return {
+      id: u.id,
+      name,
+      questionCount: u._count.questions,
+      attempts,
+      averagePercent,
+      ...wisherPortrait(name),
+    };
+  });
+
+  // Best-known first: highest average, breaking ties by who's been played more.
+  entries.sort(
+    (a, b) => b.averagePercent - a.averagePercent || b.attempts - a.attempts,
+  );
+
+  return entries;
+}

@@ -2,14 +2,22 @@
 
 import { useState } from "react";
 
+import { submitQuizAttempt } from "@/lib/actions";
 import type { WellWisherQuiz } from "@/lib/quiz";
 
 type Question = WellWisherQuiz["questions"][number];
 
-export default function QuizRunner({ questions }: { questions: Question[] }) {
+export default function QuizRunner({
+  userId,
+  questions,
+}: {
+  userId: string;
+  questions: Question[];
+}) {
   // questionId -> selected optionId
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
 
   const answeredCount = questions.filter((q) => answers[q.id]).length;
   const allAnswered = answeredCount === questions.length;
@@ -21,6 +29,21 @@ export default function QuizRunner({ questions }: { questions: Question[] }) {
   function select(questionId: string, optionId: string) {
     if (submitted) return;
     setAnswers((prev) => ({ ...prev, [questionId]: optionId }));
+  }
+
+  async function handleSubmit() {
+    if (!allAnswered || pending) return;
+    setPending(true);
+    try {
+      // Record the play so it counts toward the scoreboard. Grading is redone
+      // server-side; we ignore the return here since the on-screen tally matches.
+      await submitQuizAttempt(userId, answers);
+    } catch {
+      // Recording is best-effort — still show the player their results.
+    } finally {
+      setPending(false);
+      setSubmitted(true);
+    }
   }
 
   function reset() {
@@ -89,11 +112,11 @@ export default function QuizRunner({ questions }: { questions: Question[] }) {
           <>
             <button
               type="button"
-              onClick={() => setSubmitted(true)}
-              disabled={!allAnswered}
+              onClick={handleSubmit}
+              disabled={!allAnswered || pending}
               className="inline-block rounded-full bg-accent px-8 py-4 font-semibold text-white transition hover:-translate-y-0.5 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
             >
-              Submit
+              {pending ? "Submitting…" : "Submit"}
             </button>
             {!allAnswered && (
               <p className="mt-3 text-sm text-foreground/60">
