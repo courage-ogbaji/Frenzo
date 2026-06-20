@@ -117,11 +117,11 @@ export const photos: Photo[] = [
   {
     id: "media-14",
     image: "/images/gallery/Media (14).jpeg",
-    title: "Pure Joy",
+    title: "The Birthing",
     date: "June 2024",
     location: "With Friends",
     story:
-      "Caught mid-laugh at an event, Bem beams with unfiltered happiness while greeting friends around him. It's the kind of contagious joy that lights up a whole room.",
+      "A season of the birthing. It is not always beautiful at the initial, but the end is always glorious. A beautiful picture of a soul truly at peace.",
   },
   {
     id: "media-15",
