@@ -47,7 +47,7 @@ export const wishes: Wish[] = [
   {
     slug: "kairos",
     name: "Kairos",
-    image: "/images/wishers/kairos.jpg",
+    image: "/images/wishers/kairos.jpeg",
     excerpt:
       "I can vividly remember the very first time we spoke. What started with a simple conversation became one of the most beautiful friendships I've ever had…",
     message: [
