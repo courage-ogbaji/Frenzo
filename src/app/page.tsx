@@ -16,6 +16,7 @@ export default function Home() {
             alt="The celebrant"
             fill
             priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
           />
         </div>
@@ -82,7 +83,12 @@ export default function Home() {
 
         <div className="space-y-24">
           {wishes.map((wish, index) => (
-            <WishCard key={wish.slug} wish={wish} reversed={index % 2 === 1} />
+            <WishCard
+              key={wish.slug}
+              wish={wish}
+              reversed={index % 2 === 1}
+              priority={index === 0}
+            />
           ))}
         </div>
       </div>

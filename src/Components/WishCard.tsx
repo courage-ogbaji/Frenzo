@@ -9,9 +9,11 @@ import type { Wish } from "@/data/wishes";
 export default function WishCard({
   wish,
   reversed = false,
+  priority = false,
 }: {
   wish: Wish;
   reversed?: boolean;
+  priority?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -60,6 +62,8 @@ export default function WishCard({
           src={wish.image}
           alt={wish.name}
           fill
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
         />
       </div>

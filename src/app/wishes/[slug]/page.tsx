@@ -31,6 +31,7 @@ export default async function WishPage({
             alt={wish.name}
             fill
             priority
+            sizes="(max-width: 768px) 100vw, 40vw"
             className="object-cover"
           />
         </div>
