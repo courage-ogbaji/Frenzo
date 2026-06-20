@@ -115,7 +115,7 @@ INSERT INTO "Option" ("id", "label", "text", "isCorrect", "questionId") VALUES
   ('o_mi_3_c', 'c', 'COE of a tech company',                true,  'q_mi_3'),
   ('o_mi_4_a', 'a', 'Money',             false, 'q_mi_4'),
   ('o_mi_4_b', 'b', 'Impact',              true,  'q_mi_4'),
-  ('o_mi_4_c', 'c', 'Freedom',   false, 'q_mi_4')
+  ('o_mi_4_c', 'c', 'Freedom',   false, 'q_mi_4'),
   ('o_mi_5_a', 'a', 'Caring, Honest, Sarcastic', true,  'q_mi_5'),
   ('o_mi_5_b', 'b', 'Hardworking, Smart, Handsome', false, 'q_mi_5'),
   ('o_mi_5_c', 'c', 'Caring, Bold, Soft', false, 'q_mi_5')
