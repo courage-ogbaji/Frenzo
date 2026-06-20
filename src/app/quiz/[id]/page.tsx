@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import QuizRunner from "@/Components/QuizRunner";
 import { getQuizForWellWisher } from "@/lib/quiz";
 
 export default async function WellWisherQuiz({
@@ -37,31 +38,7 @@ export default async function WellWisherQuiz({
           </p>
         </header>
 
-        <ol className="space-y-8">
-          {quiz.questions.map((question) => (
-            <li
-              key={question.id}
-              className="rounded-2xl border border-accent/30 bg-surface p-6 shadow-lg"
-            >
-              <h2 className="mb-4 font-heading text-lg font-bold text-heading">
-                {question.position}. {question.text}
-              </h2>
-              <ul className="space-y-3">
-                {question.options.map((option) => (
-                  <li
-                    key={option.id}
-                    className="flex items-center gap-3 rounded-xl border border-accent/20 px-4 py-3 text-foreground/90"
-                  >
-                    <span className="font-semibold uppercase text-accent">
-                      {option.label}
-                    </span>
-                    <span>{option.text}</span>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
+        <QuizRunner userId={quiz.id} questions={quiz.questions} />
 
         <div className="mt-16 text-center">
           <Link

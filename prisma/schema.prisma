@@ -11,12 +11,26 @@ datasource db {
 /// App rule: a user may own at most 20 questions (enforced in application code,
 /// since SQLite/Prisma cannot express a per-parent row-count limit).
 model User {
-  id        String     @id @default(cuid())
-  email     String     @unique
+  id        String        @id @default(cuid())
+  email     String        @unique
   name      String?
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
   questions Question[]
+  attempts  QuizAttempt[]
+}
+
+/// One play-through of a well-wisher's quiz: how many questions a player got
+/// right out of the total. Used to rank which well-wisher is "known best".
+model QuizAttempt {
+  id        String   @id @default(cuid())
+  userId    String
+  score     Int
+  total     Int
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 /// A single quiz question belonging to a user.

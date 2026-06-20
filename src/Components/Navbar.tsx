@@ -14,9 +14,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 py-5 text-nav">
-      <div className="relative w-[30%] md:w-1/2">
-        <div className="flex items-center rounded-full bg-surface px-8 py-3 font-nav text-lg font-normal shadow-lg">
+    <nav className="fixed inset-x-0 top-0 z-50 flex justify-end px-4 py-5 text-nav md:justify-center">
+      <div className="relative w-auto md:w-1/2">
+        <div className="flex items-center rounded-full bg-surface px-4 py-3 font-nav text-lg font-normal shadow-lg md:px-8">
           {/* Desktop links — spread across the pill */}
           <div className="hidden w-full items-center justify-between md:flex">
             {NAV_LINKS.map((link) => (
