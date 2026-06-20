@@ -5,11 +5,11 @@ import { wishes } from "@/data/wishes";
 
 export default function Home() {
   return (
-    <main className="bg-background text-foreground">
+    <main className="overflow-x-clip bg-background text-foreground">
     {/* Hero — celebrant banner + birthday wish */}
     <section className="flex flex-col md:flex-row min-h-screen md:h-screen w-full md:items-stretch overflow-y-auto md:overflow-hidden pt-30">
       {/* Celebrant banner — top on mobile, left on desktop */}
-      <div className="w-full md:w-1/2 h-72 md:h-auto p-4 md:p-8 m-1 md:m-8">
+      <div className="w-full md:w-1/2 h-72 md:h-auto p-4 md:p-8 md:m-8">
         <div className="relative h-full w-full overflow-hidden rounded-2xl border-2 border-accent/60 bg-surface shadow-2xl shadow-accent/30">
           <Image
             src="/images/cele.png"

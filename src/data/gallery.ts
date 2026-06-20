@@ -126,20 +126,20 @@ export const photos: Photo[] = [
   {
     id: "media-15",
     image: "/images/gallery/Media (15).jpeg",
-    title: "Brothers and Blue Skies",
+    title: "Brotherhood",
     date: "September 2024",
     location: "With Friends",
     story:
-      "Bem and three friends pose together under a bright, open sky on a sunny day out. Sharply dressed and full of camaraderie, they make a memorable picture of friendship.",
+      "His greatness is not defined by how much he have, but by the quality of the men that stands him and for him.",
   },
   {
     id: "media-16",
     image: "/images/gallery/Media (16).jpeg",
-    title: "Sharing the Lesson",
+    title: "Impacting Young Minds",
     date: "December 2024",
     location: "The Classroom",
     story:
-      "From the front of a lively classroom, Bem teaches an attentive group of students with passion and presence. His confident stance shows a natural gift for leading and inspiring.",
+      "Bem has discovered how to pour out himself, it is inspiring and instructing those around him and he does it relentlessly with fire and passion. His confident stance shows a natural gift for leading and inspiring.",
   },
   {
     id: "media-17",
@@ -148,7 +148,7 @@ export const photos: Photo[] = [
     date: "January 2022",
     location: "Zoe Conference",
     story:
-      "Bem stands among a group of young people in a warm, sunlit room, a moment of fellowship and togetherness. The light streaming through the windows makes the scene feel especially tender.",
+      "Bem acts like the sent one to whome power is an asset for change and at every giving opportunity he graciously unleashes it, causing the will of men to bend to purpose.",
   },
   {
     id: "media-18",
@@ -157,16 +157,16 @@ export const photos: Photo[] = [
     date: "March 2022",
     location: "Zoe Conference",
     story:
-      "Bem stands tall with a radiant smile during a worship gathering, clearly caught up in a joyful moment. His happiness is bright and genuine, surrounded by friends.",
+      "Bem stands tall with a radiant smile during a worship, clearly caught up in a joyful moment. His happiness is bright and genuine, surrounded by beautiful sister.",
   },
   {
     id: "media-19",
     image: "/images/gallery/Media (19).jpeg",
-    title: "Two Friends, One Day",
+    title: "Benjamin and Jonah",
     date: "May 2022",
     location: "The Garden",
     story:
-      "Bem and a close friend strike a fun, confident pose on a sunny walkway lined with greenery. The easy smiles capture a great day spent in good company.",
+      "Jonah is Benjamins right hand guy. They aree closer in the spirit than they are in the flesh.",
   },
   {
     id: "media-20",
