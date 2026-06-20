@@ -131,7 +131,9 @@ export async function getQuizzesByWellWisher(): Promise<QuizSummary[]> {
   });
 }
 
-/** A single well-wisher's quiz, with questions and options (answers omitted). */
+/** A single well-wisher's quiz, with questions and options.
+ *  `isCorrect` is included so the quiz can be played and graded on the client —
+ *  these are light-hearted birthday quizzes, not high-stakes assessments. */
 export interface WellWisherQuiz {
   id: string;
   name: string;
@@ -141,7 +143,7 @@ export interface WellWisherQuiz {
     id: string;
     text: string;
     position: number;
-    options: { id: string; label: string; text: string }[];
+    options: { id: string; label: string; text: string; isCorrect: boolean }[];
   }[];
 }
 
@@ -161,11 +163,9 @@ export async function getQuizForWellWisher(
           id: true,
           text: true,
           position: true,
-          // `isCorrect` is intentionally not selected — the listing/preview
-          // must not leak answers to the client.
           options: {
             orderBy: { label: "asc" },
-            select: { id: true, label: true, text: true },
+            select: { id: true, label: true, text: true, isCorrect: true },
           },
         },
       },
