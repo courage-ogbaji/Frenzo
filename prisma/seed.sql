@@ -45,7 +45,7 @@ INSERT INTO "Question" ("id", "text", "position", "userId", "updatedAt") VALUES
   ('q_ka_1', 'Which word best describes Kairos to her friends?', 1, 'usr_kairos', CURRENT_TIMESTAMP),
   ('q_ka_2', 'What never goes unnoticed about Kairos?', 2, 'usr_kairos', CURRENT_TIMESTAMP),
   ('q_ka_3', 'Which of these is Kairos''s favorite pastime?', 3, 'usr_kairos', CURRENT_TIMESTAMP),
-  ('q_ka_4', 'Who part does Kairos''s sing?', 4, 'usr_kairos', CURRENT_TIMESTAMP),
+  ('q_ka_4', 'What part does Kairos''s sing?', 4, 'usr_kairos', CURRENT_TIMESTAMP),
   ('q_ka_5', 'What is Kairos''s tribal name?', 5, 'usr_kairos', CURRENT_TIMESTAMP)
 ON CONFLICT DO NOTHING;
 

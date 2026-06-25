@@ -184,7 +184,7 @@ export const photos: Photo[] = [
     date: "September 2022",
     location: "The Garden",
     story:
-      "Dressed handsomely in a vest and tie, Bem stands beaming before a beautifully landscaped courtyard. It's a portrait of confidence, style, and warmth.",
+      "Bems smile has become a default gesture, it does not matter what happens he wears it all day long!.",
   },
   {
     id: "media-22",
@@ -193,7 +193,7 @@ export const photos: Photo[] = [
     date: "November 2022",
     location: "Zoe Conference",
     story:
-      "A joyful singer performs with a microphone at an event, pouring her heart into the song. The colorful moment captures the lively, celebratory spirit of the gathering.",
+      "Having a sister in your life is a blessing, having one that sings doubles it.",
   },
   {
     id: "media-23",
@@ -202,7 +202,7 @@ export const photos: Photo[] = [
     date: "February 2023",
     location: "Out and About",
     story:
-      "Bem grins as he focuses on something in his hands, standing on bright green turf in front of a modern building's lettered facade. The relaxed white tee and easy smile capture a candid, happy beat of the day.",
+      "Bem never misses the joke, smart man! epic sense of humour. i wonder what he is laughing at....",
   },
   {
     id: "media-24",
@@ -211,7 +211,7 @@ export const photos: Photo[] = [
     date: "April 2023",
     location: "Out and About",
     story:
-      "With a wide, joyful smile, Bem gazes upward against the bold backdrop of a company sign. The moment radiates youthful optimism and good cheer.",
+      "youthful optimism? or just a good cheer? naaaah, it is simply \'the bem\' effect!",
   },
   {
     id: "media-25",
@@ -220,7 +220,7 @@ export const photos: Photo[] = [
     date: "June 2023",
     location: "Out and About",
     story:
-      "Bem leans casually against the wall beneath big sculpted letters, flashing a warm, content smile straight at the camera. A perfectly relaxed portrait full of charm.",
+      "your worries obviously do not define you, the word of God is the source of your joy!",
   },
   {
     id: "media-26",
@@ -229,7 +229,7 @@ export const photos: Photo[] = [
     date: "August 2023",
     location: "Out and About",
     story:
-      "Tilting his head with a quiet, confident grin, Bem poses beneath the dramatic oversized signage. The low angle makes the moment feel effortlessly stylish.",
+      "Your face card is the GRIT of your spirit! we see it in your smile because you wear it as a smile.",
   },
   {
     id: "media-27",
@@ -238,7 +238,7 @@ export const photos: Photo[] = [
     date: "October 2023",
     location: "The Garden",
     story:
-      "Surrounded by lush greenery and trees, Bem beams a huge, infectious smile in a patterned navy shirt. The sunny park setting makes the joy feel boundless.",
+      "Bem countenance is infectious! it can go beyond friends up to the faces of random strangers. he spreads it generously.",
   },
   {
     id: "media-28",
